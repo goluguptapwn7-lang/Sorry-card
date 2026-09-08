@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#fff0f5);
+  text-align:center;
+}
+.card{
+  width:90%;
+  max-width:420px;
+  background:white;
+  padding:35px 25px;
+  border-radius:25px;
+  box-shadow:0 10px 30px #0002;
+}
+.teddy{font-size:75px}
+h1{color:#e75480;margin:10px 0}
+p{
+  color:#555;
+  font-size:17px;
+  line-height:1.7;
+}
+button{
+  border:0;
+  padding:13px 25px;
+  border-radius:30px;
+  background:#e75480;
+  color:white;
+  font-size:17px;
+  cursor:pointer;
+}
+#surprise{
+  display:none;
+  margin-top:25px;
+  color:#e75480;
+  font-weight:bold;
+}
+.heart{font-size:28px}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="teddy">🧸</div>
+
+  <div class="heart">💗 💗 💗</div>
+
+  <h1>I'm Really Sorry 🥺</h1>
+
+  <p>
+    Mujhse jo bhi galti hui, uske liye dil se sorry. ❤️<br>
+    Mera intention tumhe hurt karna bilkul nahi tha.<br><br>
+    Bas ek baar meri sorry accept kar lena. 🥺
+  </p>
+
+  <button onclick="showSurprise()">Special Surprise 🎁</button>
+
+  <div id="surprise">
+    ✨ Tumhari ek smile mere liye bahut special hai. ✨<br><br>
+    🧸 Sending you a big teddy hug! ❤️
+  </div>
+</div>
+
+<script>
+function showSurprise(){
+  document.getElementById("surprise").style.display="block";
+}
+</script>
+
+</body>
+    </html>
