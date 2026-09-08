@@ -4,82 +4,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sorry ❤️</title>
+<title>Ek Chhoti Si Sorry ❤️</title>
 
 <style>
-*{box-sizing:border-box}
-body{
+*{
+  box-sizing:border-box;
   margin:0;
+  padding:0;
+}
+
+body{
   min-height:100vh;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffdde8,#fff3f7,#ffe5ee);
   display:flex;
   justify-content:center;
   align-items:center;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#ffd6e7,#fff0f5);
+  color:#4a2632;
+}
+
+#app{
+  width:100%;
+  max-width:430px;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.scene{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
+  padding:28px;
+  opacity:0;
+  transform:scale(.92);
+  pointer-events:none;
+  transition:1s ease;
 }
-.card{
-  width:90%;
-  max-width:420px;
-  background:white;
-  padding:35px 25px;
-  border-radius:25px;
-  box-shadow:0 10px 30px #0002;
+
+.scene.active{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
 }
-.teddy{font-size:75px}
-h1{color:#e75480;margin:10px 0}
+
+.teddy{
+  font-size:105px;
+  animation:float 2.5s infinite ease-in-out;
+  filter:drop-shadow(0 8px 8px #d79aaa);
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-14px)}
+}
+
+h1{
+  font-size:30px;
+  margin:18px 0 12px;
+}
+
+h2{
+  font-size:24px;
+  margin-bottom:15px;
+}
+
 p{
-  color:#555;
-  font-size:17px;
-  line-height:1.7;
+  font-size:18px;
+  line-height:1.65;
 }
+
+.card{
+  background:rgba(255,255,255,.75);
+  border-radius:28px;
+  padding:25px 20px;
+  box-shadow:0 12px 35px rgba(130,60,80,.18);
+  backdrop-filter:blur(8px);
+}
+
+.heart{
+  position:absolute;
+  font-size:22px;
+  animation:rise 5s linear infinite;
+  opacity:.7;
+}
+
+@keyframes rise{
+  from{
+    transform:translateY(100vh) rotate(0);
+    opacity:0;
+  }
+  20%{opacity:.8}
+  to{
+    transform:translateY(-10vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
 button{
   border:0;
-  padding:13px 25px;
   border-radius:30px;
-  background:#e75480;
-  color:white;
+  padding:14px 27px;
+  margin-top:25px;
   font-size:17px;
   cursor:pointer;
+  background:#ff6f91;
+  color:white;
+  box-shadow:0 7px 18px rgba(180,70,100,.25);
 }
-#surprise{
-  display:none;
-  margin-top:25px;
-  color:#e75480;
-  font-weight:bold;
+
+button:active{
+  transform:scale(.95);
 }
-.heart{font-size:28px}
+
+.progress{
+  position:absolute;
+  bottom:18px;
+  left:25px;
+  right:25px;
+  height:4px;
+  background:rgba(255,255,255,.6);
+  border-radius:5px;
+}
+
+.bar{
+  width:0%;
+  height:100%;
+  background:#ff6f91;
+  border-radius:5px;
+  transition:width .5s;
+}
+
+.small{
+  font-size:14px;
+  opacity:.7;
+  margin-top:15px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="card">
-  <div class="teddy">🧸</div>
+<div id="app">
 
-  <div class="heart">💗 💗 💗</div>
+  <div class="heart" style="left:10%;animation-delay:0s">❤️</div>
+  <div class="heart" style="left:30%;animation-delay:1.5s">💗</div>
+  <div class="heart" style="left:55%;animation-delay:3s">💕</div>
+  <div class="heart" style="left:80%;animation-delay:.8s">❤️</div>
 
-  <h1>I'm Really Sorry 🥺</h1>
+  <!-- Scene 1 -->
+  <section class="scene active">
+    <div class="teddy">🧸</div>
+    <h1>Ek chhoti si baat… ❤️</h1>
+    <p>Bas kuch dil ki baatein tumse kehni hain.</p>
+    <button onclick="nextScene()">Start 💌</button>
+  </section>
 
-  <p>
-    Mujhse jo bhi galti hui, uske liye dil se sorry. ❤️<br>
-    Mera intention tumhe hurt karna bilkul nahi tha.<br><br>
-    Bas ek baar meri sorry accept kar lena. 🥺
-  </p>
+  <!-- Scene 2 -->
+  <section class="scene">
+    <div class="teddy">🥺🧸</div>
+    <div class="card">
+      <h2>I'm Sorry ❤️</h2>
+      <p>
+        Tum mujhse kisi baat par naraz ho,
+        mujhe pata hai…
+        aur uske liye dil se sorry. 🥺❤️
+      </p>
+    </div>
+    <button onclick="nextScene()">Aage 💗</button>
+  </section>
 
-  <button onclick="showSurprise()">Special Surprise 🎁</button>
+  <!-- Scene 3 -->
+  <section class="scene">
+    <div class="card">
+      <h2>Ek baat yaad hai…</h2>
+      <p>
+        Tum hi toh bolti thi na ki apne logon mein
+        gussa aur ladaai ho jaati hai,
+        par agle din sab theek karke
+        phir baat karni chahiye. ❤️
+      </p>
+    </div>
+    <button onclick="nextScene()">Next 🧸</button>
+  </section>
 
-  <div id="surprise">
-    ✨ Tumhari ek smile mere liye bahut special hai. ✨<br><br>
-    🧸 Sending you a big teddy hug! ❤️
+  <!-- Scene 4 -->
+  <section class="scene">
+    <div class="teddy">🧸💗</div>
+    <div class="card">
+      <p>
+        Main ab tumse bas itna kehna chahta hoon
+        ki ye narazgi khatam kar do…
+        aur hum dono phir se waise hi ho jaayein
+        jaise pehle the. ❤️
+      </p>
+    </div>
+    <button onclick="nextScene()">Aage ✨</button>
+  </section>
+
+  <!-- Scene 5 -->
+  <section class="scene">
+    <div class="card">
+      <h2>I'll understand you ❤️</h2>
+      <p>
+        Main tumhari har baat samajhne aur
+        tumhari feelings ki respect karne ke liye
+        hamesha ready hoon.
+        <br><br>
+        Bas main itna chahta hoon ki
+        humara saath hamesha bana rahe. ❤️
+      </p>
+    </div>
+    <button onclick="nextScene()">Next 💕</button>
+  </section>
+
+  <!-- Scene 6 -->
+  <section class="scene">
+    <div class="teddy">🧸📚</div>
+    <div class="card">
+      <p>
+        Bahut ho gayi ye narazgi…
+        ab sab kuch chhod kar phir se saath milkar
+        padhai karenge,
+        ek-doosre ko support karenge
+        aur apna ye saath hamesha banaye rakhenge.
+      </p>
+    </div>
+    <button onclick="nextScene()">Last baat ❤️</button>
+  </section>
+
+  <!-- Scene 7 -->
+  <section class="scene">
+    <div class="teddy">🥺❤️🧸</div>
+    <div class="card">
+      <h2>Dil se…</h2>
+      <p>
+        Mujhe perfect nahi banna,
+        bas tumhare saath milkar
+        cheezein better karni hain.
+        <br><br>
+        Ek baar dil se meri
+        sorry accept kar lo. 🥺❤️
+      </p>
+    </div>
+    <button onclick="nextScene()">Special Surprise 🎁</button>
+  </section>
+
+  <!-- Scene 8 -->
+  <section class="scene">
+    <div class="teddy">🧸🎁❤️</div>
+    <h1>Ek last question…</h1>
+    <div class="card">
+      <p><b>Kya tum meri sorry accept karogi? 🥺❤️</b></p>
+      <button onclick="accepted()">Haan ❤️</button>
+      <button onclick="accepted()">Bilkul 🧸💕</button>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section class="scene">
+    <div class="teddy">🧸❤️✨</div>
+    <h1>Thank You ❤️</h1>
+    <div class="card">
+      <p>
+        Bas itni si khwahish hai…
+        narazgi kam ho,
+        muskurahat zyada ho,
+        aur hum dono ek-doosre ko
+        samajhte rahein. ❤️
+        <br><br>
+        <b>Take care & keep smiling 🧸💗</b>
+      </p>
+    </div>
+  </section>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
   </div>
+
 </div>
 
 <script>
-function showSurprise(){
-  document.getElementById("surprise").style.display="block";
+let current = 0;
+const scenes = document.querySelectorAll(".scene");
+const bar = document.getElementById("bar");
+
+function showScene(){
+  scenes.forEach((s,i)=>{
+    s.classList.toggle("active",i===current);
+  });
+
+  bar.style.width =
+    ((current)/(scenes.length-1))*100 + "%";
 }
+
+function nextScene(){
+  if(current < scenes.length-1){
+    current++;
+    showScene();
+  }
+}
+
+function accepted(){
+  current = scenes.length-1;
+  showScene();
+
+  for(let i=0;i<15;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.innerHTML="❤️";
+      h.style.position="fixed";
+      h.style.left=Math.random()*100+"%";
+      h.style.top="100%";
+      h.style.fontSize=(18+Math.random()*25)+"px";
+      h.style.transition="4s ease-out";
+      document.body.appendChild(h);
+
+      setTimeout(()=>{
+        h.style.top="-10%";
+        h.style.transform="rotate(360deg)";
+        h.style.opacity="0";
+      },50);
+
+      setTimeout(()=>h.remove(),4200);
+    },i*120);
+  }
+}
+
+showScene();
 </script>
 
 </body>
-    </html>
+</html>
